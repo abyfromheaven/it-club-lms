@@ -1,8 +1,19 @@
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Play, Circle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 export const Hero = () => {
+  const { toast } = useToast();
+
+  const handleStartLearning = () => {
+    toast({
+      title: "Akses Terkunci",
+      description: "Silakan hubungi admin IT CLUB untuk aktivasi akun member Anda.",
+      variant: "destructive",
+    });
+  };
+
   return (
     <section className="relative pt-32 md:pt-40 pb-20 overflow-hidden">
       <div className="absolute inset-0 grid-bg pointer-events-none" />
@@ -22,35 +33,33 @@ export const Hero = () => {
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-xs font-medium"
           >
             <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-            <span className="text-primary">SMKS 1 Triple J</span>
+            <span className="text-primary">SMK 1 TRIPLE "J"</span>
             <span className="text-muted-foreground">— Learning Management System</span>
           </motion.div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tightest leading-[1.05]">
-            Dari Newbie Jadi Pro,
-            <br />
-            Belajar Bareng di{" "}
-            <span className="text-gradient-gold">IT Club</span>
-            <br />
-            SMKS 1 Triple J
+            Level Up Your Tech Skills with{" "}
+            <span className="text-gradient-gold">IT CLUB SMK 1 TRIPLE "J"</span>
           </h1>
 
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Platform arsip pembelajaran terpadu. Pelajari{" "}
-            <span className="text-foreground font-medium">IoT</span>,{" "}
-            <span className="text-foreground font-medium">Cyber Security</span>, dan{" "}
-            <span className="text-foreground font-medium">Networking</span> melalui modul video terkurasi.
+            Digital learning hub untuk IT CLUB. Sinkronkan progresmu, akses arsip materi internal, dan kuasai setiap modul pembelajaran kapan saja dalam satu platform terpadu.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button variant="gold" size="lg" className="group">
-              Mulai Belajar
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button variant="outlineGold" size="lg">
-              <BookOpen className="size-4" />
-              Lihat Katalog
-            </Button>
+          <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="gold" size="lg" className="group" onClick={handleStartLearning}>
+                Mulai Belajar
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+              <Button variant="outlineGold" size="lg">
+                <BookOpen className="size-4" />
+                Lihat Katalog
+              </Button>
+            </div>
+            <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest">
+              Akses terbatas hanya untuk anggota aktif IT CLUB SMK 1 TRIPLE "J". 
+            </p>
           </div>
         </motion.div>
 

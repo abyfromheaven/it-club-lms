@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LoginDialog } from "@/components/auth/LoginDialog";
 
 const links = [
   { label: "Materi", href: "#materi" },
-  { label: "Projek", href: "#projek" },
   { label: "Event", href: "#event" },
   { label: "Tentang Kami", href: "#tentang" },
 ];
@@ -41,7 +41,9 @@ export const Navbar = () => {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="auth" size="sm">Login Member</Button>
+          <LoginDialog>
+            <Button variant="auth" size="sm">Login Member</Button>
+          </LoginDialog>
         </div>
 
         <button
@@ -67,7 +69,9 @@ export const Navbar = () => {
                   {l.label}
                 </a>
               ))}
-              <Button variant="auth" className="w-full mt-2">Login Member</Button>
+              <LoginDialog>
+                <Button variant="auth" className="w-full mt-2">Login Member</Button>
+              </LoginDialog>
             </div>
           </motion.div>
         )}

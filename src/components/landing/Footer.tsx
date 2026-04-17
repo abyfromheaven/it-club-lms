@@ -14,7 +14,7 @@ export const Footer = () => {
             </span>
           </a>
           <p className="text-sm text-muted-foreground max-w-xs">
-            Platform pembelajaran terpadu untuk member IT Club SMKS 1 Triple J.
+            Platform pembelajaran terpadu untuk member IT CLUB SMK 1 TRIPLE "J".
           </p>
         </div>
 
@@ -22,7 +22,6 @@ export const Footer = () => {
           <h4 className="text-sm font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2.5 text-sm text-muted-foreground">
             <li><a href="#materi" className="hover:text-primary transition-colors">Materi</a></li>
-            <li><a href="#projek" className="hover:text-primary transition-colors">Projek</a></li>
             <li><a href="#event" className="hover:text-primary transition-colors">Event</a></li>
             <li><a href="#tentang" className="hover:text-primary transition-colors">Tentang Kami</a></li>
           </ul>
@@ -31,9 +30,9 @@ export const Footer = () => {
         <div>
           <h4 className="text-sm font-semibold mb-4">Tracks</h4>
           <ul className="space-y-2.5 text-sm text-muted-foreground">
-            <li>Internet of Things</li>
-            <li>Cyber Security</li>
-            <li>Networking</li>
+            <li>Internet of Things (IoT)</li>
+            <li>Cyber Security (CYSEC)</li>
+            <li>Computer Networking (COMPNET)</li>
           </ul>
         </div>
 
@@ -55,7 +54,7 @@ export const Footer = () => {
 
       <div className="border-t border-border">
         <div className="container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} IT Club SMKS 1 Triple J. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} IT CLUB SMK 1 TRIPLE "J". All rights reserved.</p>
           <p className="font-mono">
             Made with <span className="text-primary">♦</span> by IT Club
           </p>

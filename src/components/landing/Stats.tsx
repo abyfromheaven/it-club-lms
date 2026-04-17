@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 
 const stats = [
   { value: "100+", label: "Materi Video" },
-  { value: "50+", label: "Anggota Aktif" },
-  { value: "20+", label: "Projek Komunitas" },
+  { value: "20", label: "Anggota Aktif" },
 ];
 
 export const Stats = () => {
@@ -15,7 +14,7 @@ export const Stats = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-3 gap-4 sm:gap-8 items-center"
+          className="grid grid-cols-2 gap-4 sm:gap-8 items-center"
         >
           {stats.map((s, i) => (
             <div key={s.label} className="relative flex flex-col items-center text-center">

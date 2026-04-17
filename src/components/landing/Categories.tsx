@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Cpu, ShieldCheck, Network, ArrowUpRight } from "lucide-react";
+import { Cpu, Swords, Network, ArrowUpRight } from "lucide-react";
 
 const categories = [
   {
@@ -9,16 +9,16 @@ const categories = [
     tag: "IoT",
   },
   {
-    icon: ShieldCheck,
+    icon: Swords,
     title: "Cyber Security",
-    desc: "Ethical Hacking & Network Defense",
-    tag: "Security",
+    desc: "Ethical Hacking & Digital Forensics",
+    tag: "CYSEC",
   },
   {
     icon: Network,
     title: "Computer Networking",
     desc: "Routing, Switching, & Infrastructure",
-    tag: "Network",
+    tag: "COMPNET",
   },
 ];
 
@@ -35,7 +35,7 @@ export const Categories = () => {
         >
           <span className="text-xs font-mono text-primary uppercase tracking-widest">// Core Tracks</span>
           <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tightest">
-            Tiga jalur pembelajaran <span className="text-gradient-gold">terkurasi</span>
+            Fokus kurikulum <span className="text-gradient-gold">berbasis spesialisasi</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
             Dari fundamental hingga advanced — pilih jalur dan mulai eksplorasi sesuai passion teknologi kamu.
