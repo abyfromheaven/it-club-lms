@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Cpu, Swords, Network, ArrowUpRight } from "lucide-react";
+import { Cpu, Swords, Network, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
+import { Button } from "@/components/ui/button";
 
 const categories = [
   {
@@ -20,29 +22,64 @@ const categories = [
     desc: "Routing, Switching, & Infrastructure",
     tag: "COMPNET",
   },
+  {
+    icon: Cpu,
+    title: "Web Development",
+    desc: "Frontend, Backend & Cloud",
+    tag: "WEB",
+  },
 ];
 
 export const Categories = () => {
-  return (
-    <section id="materi" className="py-24">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl mb-14"
-        >
-          <span className="text-xs font-mono text-primary uppercase tracking-widest">// Core Tracks</span>
-          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tightest">
-            Fokus kurikulum <span className="text-gradient-gold">berbasis spesialisasi</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Dari fundamental hingga advanced — pilih jalur dan mulai eksplorasi sesuai passion teknologi kamu.
-          </p>
-        </motion.div>
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-        <div className="grid md:grid-cols-3 gap-5">
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, clientWidth } = scrollContainerRef.current;
+      const scrollTo = direction === "left" ? scrollLeft - clientWidth : scrollLeft + clientWidth;
+      scrollContainerRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section id="spesialisasi" className="py-24 overflow-hidden">
+      <div className="container">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div className="max-w-2xl">
+            <span className="text-xs font-mono text-primary uppercase tracking-widest">// Core Tracks</span>
+            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tightest">
+              Fokus kurikulum <span className="text-gradient-gold">berbasis spesialisasi</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Dari fundamental hingga advanced — pilih jalur dan mulai eksplorasi sesuai passion teknologi kamu.
+            </p>
+          </div>
+
+          <div className="hidden sm:flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={() => scroll("left")}
+              className="rounded-full border-primary/20 bg-background/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary/40 transition-all"
+            >
+              <ChevronLeft className="size-5" />
+            </Button>
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={() => scroll("right")}
+              className="rounded-full border-primary/20 bg-background/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary/40 transition-all"
+            >
+              <ChevronRight className="size-5" />
+            </Button>
+          </div>
+        </div>
+
+        <div 
+          ref={scrollContainerRef}
+          className="flex gap-5 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {categories.map((cat, i) => (
             <motion.div
               key={cat.title}
@@ -51,7 +88,7 @@ export const Categories = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -6 }}
-              className="group relative p-6 rounded-xl bg-card gold-border gold-border-hover cursor-pointer overflow-hidden"
+              className="group relative p-6 rounded-xl bg-card gold-border gold-border-hover cursor-pointer overflow-hidden min-w-[280px] sm:min-w-[320px] snap-center"
             >
               <div className="absolute -top-12 -right-12 size-40 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-colors" />
 

@@ -27,10 +27,10 @@ export const Showcase = () => {
               Projek <span className="text-gradient-gold">anggota</span> kami
             </h2>
           </div>
-          <p className="text-sm text-muted-foreground sm:max-w-xs">
-            Karya nyata dari member IT Club — dari prototype hingga production-ready.
-          </p>
-        </motion.div>
+            <p className="text-sm text-muted-foreground sm:max-w-xs">
+            Karya nyata dari Anggota IT Club — dari prototype hingga production-ready.
+            </p>
+            </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((p, i) => (

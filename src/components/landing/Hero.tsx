@@ -9,7 +9,7 @@ export const Hero = () => {
   const handleStartLearning = () => {
     toast({
       title: "Akses Terkunci",
-      description: "Silakan hubungi admin IT CLUB untuk aktivasi akun member Anda.",
+      description: "Silakan hubungi admin IT CLUB untuk aktivasi akun Anggota Anda.",
       variant: "destructive",
     });
   };
@@ -85,9 +85,9 @@ export const Hero = () => {
             {/* Code */}
             <pre className="p-5 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto">
               <code className="block">
-                <span className="text-muted-foreground">// Welcome, member 👋</span>{"\n"}
+                <span className="text-muted-foreground">// Welcome, Anggota 👋</span>{"\n"}
                 <span className="text-accent-2">const</span>{" "}
-                <span className="text-primary">member</span> = {"{"}
+                <span className="text-primary">anggota</span> = {"{"}
                 {"\n  "}name: <span className="text-emerald-400">"Anggota IT Club"</span>,
                 {"\n  "}level: <span className="text-emerald-400">"Junior Dev"</span>,
                 {"\n  "}tracks: [
@@ -98,7 +98,7 @@ export const Hero = () => {
                 {"\n  "}progress: <span className="text-primary">87</span>
                 {"\n"}{"}"};{"\n\n"}
                 <span className="text-accent-2">await</span>{" "}
-                <span className="text-primary">lms</span>.<span className="text-foreground">stream</span>(member);
+                <span className="text-primary">lms</span>.<span className="text-foreground">stream</span>(anggota);
               </code>
             </pre>
 

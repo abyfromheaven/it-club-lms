@@ -6,7 +6,7 @@ const steps = [
     n: "01",
     icon: LogIn,
     title: "Auth",
-    desc: "Login menggunakan kredensial member IT Club untuk mengakses platform.",
+    desc: "Login menggunakan kredensial Anggota IT Club untuk mengakses platform.",
   },
   {
     n: "02",
@@ -24,7 +24,7 @@ const steps = [
 
 export const HowWeLearn = () => {
   return (
-    <section id="event" className="py-24 relative">
+    <section id="how-it-works" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-radial pointer-events-none" />
       <div className="container relative">
         <motion.div

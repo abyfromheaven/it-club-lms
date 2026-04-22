@@ -5,9 +5,8 @@ import { Button } from "@/components/ui/button";
 import { LoginDialog } from "@/components/auth/LoginDialog";
 
 const links = [
-  { label: "Materi", href: "#materi" },
-  { label: "Event", href: "#event" },
-  { label: "Tentang Kami", href: "#tentang" },
+  { label: "Dashboard", href: "/dashboard" },
+  { label: "Materi", href: "/materi" },
 ];
 
 export const Navbar = () => {
@@ -23,11 +22,11 @@ export const Navbar = () => {
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav" : "bg-transparent"}`}>
       <nav className="container flex h-16 items-center justify-between">
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="grid place-items-center size-9 rounded-lg bg-gradient-gold text-primary-foreground shadow-gold">
-            <Code2 className="size-5" strokeWidth={2.5} />
+        <a href="#" className="flex items-center gap-3 group">
+          <div className="grid place-items-center size-12 rounded-full overflow-hidden border border-primary/30 bg-primary/5 shadow-gold transition-transform group-hover:scale-110">
+            <img src="/logo.png" alt="IT Club Logo" className="size-full object-contain" />
           </div>
-          <span className="font-bold tracking-tight text-lg">
+          <span className="font-bold tracking-tight text-xl">
             IT<span className="text-gradient-gold">Club</span>
           </span>
         </a>
@@ -42,7 +41,7 @@ export const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-3">
           <LoginDialog>
-            <Button variant="auth" size="sm">Login Member</Button>
+            <Button variant="auth" size="sm">Login Anggota</Button>
           </LoginDialog>
         </div>
 
@@ -70,7 +69,7 @@ export const Navbar = () => {
                 </a>
               ))}
               <LoginDialog>
-                <Button variant="auth" className="w-full mt-2">Login Member</Button>
+                <Button variant="auth" className="w-full mt-2">Login Anggota</Button>
               </LoginDialog>
             </div>
           </motion.div>

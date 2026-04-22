@@ -1,29 +1,29 @@
 import { Code2, Github, MessageCircle, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
     <footer id="tentang" className="border-t border-border bg-card/30 mt-12">
       <div className="container py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
         <div className="col-span-2 md:col-span-1 space-y-4">
-          <a href="#" className="flex items-center gap-2">
-            <div className="grid place-items-center size-9 rounded-lg bg-gradient-gold text-primary-foreground">
-              <Code2 className="size-5" strokeWidth={2.5} />
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="grid place-items-center size-14 rounded-full overflow-hidden border border-white/10 bg-white/5 transition-all group-hover:border-primary/50 shadow-lg">
+              <img src="/logo.png" alt="IT Club Logo" className="size-full object-contain scale-110" />
             </div>
-            <span className="font-bold tracking-tight text-lg">
+            <span className="font-bold tracking-tight text-xl">
               IT<span className="text-gradient-gold">Club</span>
             </span>
           </a>
           <p className="text-sm text-muted-foreground max-w-xs">
-            Platform pembelajaran terpadu untuk member IT CLUB SMK 1 TRIPLE "J".
+            Platform pembelajaran terpadu untuk Anggota IT CLUB SMK 1 TRIPLE "J".
           </p>
         </div>
 
         <div>
           <h4 className="text-sm font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2.5 text-sm text-muted-foreground">
-            <li><a href="#materi" className="hover:text-primary transition-colors">Materi</a></li>
-            <li><a href="#event" className="hover:text-primary transition-colors">Event</a></li>
-            <li><a href="#tentang" className="hover:text-primary transition-colors">Tentang Kami</a></li>
+            <li><Link to="/dashboard" className="hover:text-primary transition-colors">Dashboard</Link></li>
+            <li><Link to="/materi" className="hover:text-primary transition-colors">Materi</Link></li>
           </ul>
         </div>
 

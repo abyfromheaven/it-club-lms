@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Lock, User, ShieldCheck } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface LoginDialogProps {
   children: React.ReactNode;
@@ -21,20 +22,23 @@ export const LoginDialog = ({ children }: LoginDialogProps) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulasi delay pengecekan database
+    // Dummy Login System untuk Development
     setTimeout(() => {
       setLoading(false);
       toast({
-        title: "Kredensial Tidak Ditemukan",
-        description: "ID Member atau Password tidak terdaftar dalam database IT CLUB SMK 1 TRIPLE \"J\". Silakan hubungi pengurus untuk aktivasi.",
-        variant: "destructive",
+        title: "Login Berhasil",
+        description: "Selamat datang kembali, Anggota IT Club!",
+        variant: "default",
       });
-    }, 1500);
+      setOpen(false); // Menutup dialog setelah sukses
+      navigate("/dashboard");
+    }, 1000);
   };
 
   return (
@@ -48,7 +52,7 @@ export const LoginDialog = ({ children }: LoginDialogProps) => {
             <ShieldCheck className="size-6 text-primary" />
           </div>
           <DialogTitle className="text-2xl font-bold text-center tracking-tight">
-            Member Login
+            Login Anggota
           </DialogTitle>
           <DialogDescription className="text-center text-muted-foreground">
             Masukkan ID Anggota IT Club Anda untuk mengakses LMS.
@@ -57,7 +61,7 @@ export const LoginDialog = ({ children }: LoginDialogProps) => {
 
         <form onSubmit={handleSubmit} className="space-y-5 mt-4">
           <div className="space-y-2">
-            <Label htmlFor="memberId">ID Member / Email</Label>
+            <Label htmlFor="memberId">ID Anggota / Email</Label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
               <Input 

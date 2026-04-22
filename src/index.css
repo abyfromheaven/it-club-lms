@@ -150,4 +150,11 @@
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .glow-gold { box-shadow: var(--shadow-gold); }
   .glow-auth { box-shadow: var(--shadow-auth); }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
