@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-import { Cpu, Swords, Network, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
-import { Button } from "@/components/ui/button";
+import { Cpu, Swords, Network, ArrowUpRight } from "lucide-react";
 
 const categories = [
   {
@@ -22,87 +20,54 @@ const categories = [
     desc: "Routing, Switching, & Infrastructure",
     tag: "COMPNET",
   },
-  {
-    icon: Cpu,
-    title: "Web Development",
-    desc: "Frontend, Backend & Cloud",
-    tag: "WEB",
-  },
 ];
 
 export const Categories = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, clientWidth } = scrollContainerRef.current;
-      const scrollTo = direction === "left" ? scrollLeft - clientWidth : scrollLeft + clientWidth;
-      scrollContainerRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
-    }
-  };
-
   return (
-    <section id="spesialisasi" className="py-24 overflow-hidden">
+    <section id="spesialisasi" className="py-24 overflow-hidden bg-transparent">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div className="max-w-2xl">
-            <span className="text-xs font-mono text-primary uppercase tracking-widest">// Core Tracks</span>
-            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tightest">
-              Fokus kurikulum <span className="text-gradient-gold">berbasis spesialisasi</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl text-left">
+            <span className="text-xs font-mono text-primary uppercase tracking-widest font-bold">// Core Tracks</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-black tracking-tightest leading-tight">
+              Fokus kurikulum <br />
+              <span className="text-gradient-gold">berbasis spesialisasi</span>
             </h2>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
               Dari fundamental hingga advanced — pilih jalur dan mulai eksplorasi sesuai passion teknologi kamu.
             </p>
           </div>
-
-          <div className="hidden sm:flex items-center gap-2">
-            <Button 
-              variant="outline" 
-              size="icon" 
-              onClick={() => scroll("left")}
-              className="rounded-full border-primary/20 bg-background/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary/40 transition-all"
-            >
-              <ChevronLeft className="size-5" />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="icon" 
-              onClick={() => scroll("right")}
-              className="rounded-full border-primary/20 bg-background/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary/40 transition-all"
-            >
-              <ChevronRight className="size-5" />
-            </Button>
-          </div>
         </div>
 
-        <div 
-          ref={scrollContainerRef}
-          className="flex gap-5 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {categories.map((cat, i) => (
             <motion.div
               key={cat.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -6 }}
-              className="group relative p-6 rounded-xl bg-card gold-border gold-border-hover cursor-pointer overflow-hidden min-w-[280px] sm:min-w-[320px] snap-center"
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              whileHover={{ y: -10 }}
+              className="group relative p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-primary/30 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md"
             >
-              <div className="absolute -top-12 -right-12 size-40 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-colors" />
+              {/* Decorative Glow inside card */}
+              <div className="absolute -top-20 -right-20 size-48 rounded-full bg-primary/5 blur-[80px] group-hover:bg-primary/20 transition-all duration-700" />
 
               <div className="relative flex items-start justify-between">
-                <div className="grid place-items-center size-12 rounded-lg bg-primary/10 border border-primary/30 text-primary">
-                  <cat.icon className="size-6" strokeWidth={1.75} />
+                <div className="grid place-items-center size-16 rounded-[1.5rem] bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary group-hover:text-primary-foreground shadow-lg transition-all duration-500">
+                  <cat.icon className="size-8" strokeWidth={1.5} />
                 </div>
-                <ArrowUpRight className="size-5 text-muted-foreground group-hover:text-primary group-hover:rotate-12 transition-all" />
+                <div className="size-10 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-all">
+                  <ArrowUpRight className="size-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </div>
               </div>
 
-              <div className="relative mt-6">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-primary/80">{cat.tag}</span>
-                <h3 className="mt-1 text-xl font-bold tracking-tight">{cat.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{cat.desc}</p>
+              <div className="relative mt-10">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-primary/80 font-black px-2 py-1 rounded bg-primary/5 border border-primary/10">{cat.tag}</span>
+                <h3 className="mt-4 text-2xl font-black tracking-tight text-white">{cat.title}</h3>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  {cat.desc}
+                </p>
               </div>
             </motion.div>
           ))}

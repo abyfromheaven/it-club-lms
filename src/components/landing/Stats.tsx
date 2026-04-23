@@ -7,7 +7,7 @@ const stats = [
 
 export const Stats = () => {
   return (
-    <section className="py-12 border-y border-border bg-muted/20">
+    <section className="py-12 bg-transparent">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

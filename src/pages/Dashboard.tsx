@@ -1,27 +1,22 @@
 import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   LayoutDashboard, 
   BookOpen, 
   LogOut, 
   Zap,
-  CheckCircle2,
   Lock,
   Cpu,
   Swords,
   Network,
-  Plus,
-  ChevronRight,
-  ArrowRight,
   Target,
   Trophy,
   Activity,
   Flame,
   Play
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -35,9 +30,8 @@ const SPECIALIZATIONS = {
 const Dashboard = () => {
   const navigate = useNavigate();
   
-  // --- STATE (Mocking current progress) ---
-  const [completedCoreCount] = useState(2); // 2 out of 41
-  const [major, setMajor] = useState<keyof typeof SPECIALIZATIONS | null>(null);
+  const [completedCoreCount] = useState(2);
+  const [major] = useState<keyof typeof SPECIALIZATIONS | null>(null);
   const [second] = useState<keyof typeof SPECIALIZATIONS | null>(null);
 
   const coreProgress = (completedCoreCount / 41) * 100;
@@ -50,15 +44,19 @@ const Dashboard = () => {
   }, [major, second]);
 
   return (
-    <div className="flex min-h-screen bg-[#0A0E14] text-foreground font-sans overflow-x-hidden">
+    <div className="flex min-h-screen bg-[#0A0E14] text-foreground font-sans overflow-x-hidden selection:bg-primary/30 relative">
+      {/* Global Atmospheric Glows */}
+      <div className="absolute top-[-10%] right-[-10%] size-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-[10%] left-[-10%] size-[400px] bg-primary/10 blur-[100px] rounded-full pointer-events-none z-0" />
+
       {/* Sidebar */}
-      <aside className="hidden md:flex w-64 flex-col border-r border-white/5 bg-[#0D121A] sticky top-0 h-screen z-20">
-        <div className="p-8">
-          <div className="flex items-center gap-4 group">
-            <div className="grid place-items-center size-14 rounded-full overflow-hidden border border-white/10 bg-white/5 shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all group-hover:border-primary/50 group-hover:shadow-[0_0_25px_rgba(212,175,55,0.15)]">
+      <aside className="hidden md:flex w-64 flex-col border-r border-white/5 bg-[#0A0E14]/60 backdrop-blur-xl sticky top-0 h-screen z-20">
+        <div className="p-8 text-left">
+          <div className="flex items-center gap-4 group cursor-pointer" onClick={() => navigate("/")}>
+            <div className="grid place-items-center size-12 rounded-full overflow-hidden border border-white/10 bg-white/5 shadow-gold transition-all group-hover:border-primary/50">
               <img src="/logo.png" alt="IT Club Logo" className="size-full object-contain scale-110" />
             </div>
-            <span className="font-bold tracking-tight text-xl">
+            <span className="font-bold tracking-tight text-xl text-white">
               IT<span className="text-gradient-gold">Club</span>
             </span>
           </div>
@@ -67,7 +65,7 @@ const Dashboard = () => {
         <nav className="flex-1 px-4 space-y-2 mt-4">
           {[
             { label: "Dashboard", icon: LayoutDashboard, active: true },
-            { label: "Materi", icon: BookOpen, href: "/materi" },
+            { label: "Materi Hub", icon: BookOpen, href: "/materi" },
           ].map((link) => (
             <button
               key={link.label}
@@ -75,7 +73,7 @@ const Dashboard = () => {
               className={cn(
                 "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300",
                 link.active 
-                  ? "bg-primary/10 text-primary border border-primary/20 shadow-[0_0_15px_rgba(234,179,8,0.05)]" 
+                  ? "bg-primary/10 text-primary border border-primary/20 shadow-gold" 
                   : "text-muted-foreground hover:bg-white/5"
               )}
             >
@@ -88,7 +86,7 @@ const Dashboard = () => {
         <div className="p-4 mt-auto border-t border-white/5">
           <Button 
             variant="ghost" 
-            className="w-full justify-start gap-3 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+            className="w-full justify-start gap-3 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-xl"
             onClick={() => navigate("/")}
           >
             <LogOut className="size-5" />
@@ -98,40 +96,38 @@ const Dashboard = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col min-w-0">
-        {/* Header */}
-        <header className="h-20 border-b border-white/5 bg-[#0A0E14]/80 backdrop-blur-xl sticky top-0 z-10 px-6 md:px-10 flex items-center justify-between">
+      <main className="flex-1 flex flex-col min-w-0 relative z-10">
+        <header className="h-20 border-b border-white/5 bg-[#0A0E14]/40 backdrop-blur-xl sticky top-0 z-30 px-6 md:px-10 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <h2 className="text-sm font-bold tracking-widest uppercase text-muted-foreground hidden sm:block">
-              Pusat Kendali
+            <h2 className="text-[10px] font-mono font-bold tracking-[0.3em] uppercase text-primary/60 hidden sm:block">
+              // Control Center
             </h2>
           </div>
           
           <div className="flex items-center gap-5 ml-auto">
-            <div className={cn("px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border transition-all duration-500", badge.color)}>
+            <div className={cn("px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border backdrop-blur-md transition-all duration-500", badge.color)}>
               {badge.label}
             </div>
             <div className="flex items-center gap-3 pl-5 border-l border-white/10">
               <div className="text-right hidden sm:block">
-                <p className="text-sm font-bold">Anggota IT Club</p>
-                <p className="text-[10px] text-muted-foreground uppercase font-mono">ITC-2024-001</p>
+                <p className="text-xs font-black text-white uppercase tracking-tight">Anggota IT Club</p>
+                <p className="text-[9px] text-muted-foreground uppercase font-mono">ITC-2024-001</p>
               </div>
-              <Avatar className="size-10 border border-white/10 shadow-xl">
-                <AvatarFallback className="bg-primary/10 text-primary font-bold">ITC</AvatarFallback>
+              <Avatar className="size-10 border border-white/10 shadow-gold">
+                <AvatarFallback className="bg-primary/10 text-primary font-black text-xs text-center leading-[40px]">ITC</AvatarFallback>
               </Avatar>
             </div>
           </div>
         </header>
 
-        {/* Dashboard Content */}
-        <div className="p-6 md:p-10 space-y-10 max-w-6xl mx-auto w-full">
-          {/* Welcome & High Level Progress */}
+        <div className="p-6 md:p-10 space-y-12 max-w-6xl mx-auto w-full">
           <section className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 space-y-4">
-              <h1 className="text-3xl md:text-5xl font-black tracking-tightest">
-                Halo, <span className="text-gradient-gold">Anggota</span>! 👋
+            <div className="lg:col-span-2 space-y-6 text-left">
+              <h1 className="text-4xl md:text-6xl font-black tracking-tightest leading-tight text-white uppercase">
+                HALO, <br />
+                <span className="text-gradient-gold">ANGGOTA</span>! 👋
               </h1>
-              <p className="text-muted-foreground text-lg max-w-xl">
+              <p className="text-muted-foreground text-lg max-w-xl leading-relaxed">
                 Lanjutkan perjalanan teknismu. CORE baru selesai {Math.round(coreProgress)}%.
               </p>
               
@@ -139,179 +135,97 @@ const Dashboard = () => {
                 <Button 
                   size="lg" 
                   onClick={() => navigate("/materi")}
-                  className="bg-gradient-gold text-primary-foreground font-black uppercase tracking-widest px-8 rounded-2xl shadow-gold hover:scale-[1.02] transition-transform flex gap-3"
+                  className="bg-gradient-gold text-primary-foreground font-black uppercase tracking-widest text-xs px-10 rounded-2xl shadow-gold hover:scale-[1.02] transition-transform flex gap-3 h-14"
                 >
-                  <Play className="size-5 fill-current" /> Lanjut Belajar
+                  <Play className="size-4 fill-current" /> Lanjut Belajar
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline"
                   onClick={() => navigate("/materi")}
-                  className="border-white/10 bg-white/5 rounded-2xl font-bold uppercase tracking-widest px-8 hover:bg-white/10"
+                  className="border-white/10 bg-white/5 backdrop-blur-md rounded-2xl font-bold uppercase tracking-widest text-xs px-10 hover:bg-white/10 h-14"
                 >
                   Semua Materi
                 </Button>
               </div>
             </div>
 
-            {/* Streak / Activity Mini Card */}
-            <Card className="bg-white/[0.02] border-white/5 p-6 rounded-3xl flex flex-col justify-between">
+            <Card className="bg-white/[0.03] border-white/5 p-8 rounded-[2.5rem] flex flex-col justify-between backdrop-blur-sm hover:border-primary/30 transition-all duration-500 text-left">
               <div className="flex justify-between items-start">
-                <div className="p-3 rounded-2xl bg-orange-500/10 text-orange-500">
-                  <Flame className="size-6 fill-current" />
+                <div className="p-4 rounded-2xl bg-orange-500/10 text-orange-500 border border-orange-500/20 shadow-lg">
+                  <Flame className="size-7 fill-current" />
                 </div>
-                <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Learning Streak</span>
+                <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest opacity-60">Learning Streak</span>
               </div>
-              <div>
-                <p className="text-4xl font-black">12</p>
-                <p className="text-sm text-muted-foreground">Hari berturut-turut</p>
+              <div className="mt-8">
+                <p className="text-5xl font-black tracking-tighter text-white">12</p>
+                <p className="text-sm text-muted-foreground font-medium uppercase tracking-widest mt-1">Hari berturut-turut</p>
               </div>
             </Card>
           </section>
 
-          {/* SECTION 1: STATUS & TRACK PROGRESS */}
           <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Core Mastery */}
-            <Card className="bg-[#0D121A] border-white/5 p-8 rounded-[2rem] space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="size-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
+            <Card className="bg-white/[0.03] border-white/5 p-8 rounded-[2.5rem] space-y-8 backdrop-blur-sm hover:border-primary/30 transition-all duration-500 text-left">
+              <div className="flex items-center gap-4">
+                <div className="size-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500 border border-blue-500/20">
                   <Target className="size-6" />
                 </div>
-                <h3 className="font-bold text-lg uppercase tracking-tight">Fase CORE</h3>
+                <h3 className="font-black text-lg uppercase tracking-widest text-white">Fase CORE</h3>
               </div>
-              <div className="space-y-3">
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Mastery Progress</span>
-                  <span className="font-mono text-primary font-bold">{Math.round(coreProgress)}%</span>
+              <div className="space-y-4">
+                <div className="flex justify-between text-[10px] font-mono uppercase tracking-widest">
+                  <span className="text-muted-foreground font-bold">Mastery Progress</span>
+                  <span className="text-primary font-black">{Math.round(coreProgress)}%</span>
                 </div>
-                <Progress value={coreProgress} className="h-2 bg-white/5" />
-                <p className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest leading-relaxed">
-                  {completedCoreCount} dari 41 modul dasar selesai
+                <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                   <div className="h-full bg-primary shadow-gold transition-all duration-1000" style={{ width: `${coreProgress}%` }} />
+                </div>
+                <p className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest leading-relaxed opacity-60">
+                  {completedCoreCount} / 41 Modul Dasar
                 </p>
-
               </div>
             </Card>
 
-            {/* Major Path */}
-            <Card className="bg-[#0D121A] border-white/5 p-8 rounded-[2rem] space-y-6 relative overflow-hidden group">
+            <Card className="bg-white/[0.03] border-white/5 p-8 rounded-[2.5rem] space-y-8 relative overflow-hidden group backdrop-blur-sm hover:border-primary/30 transition-all duration-500 text-left">
               {!isCoreFinished && (
-                <div className="absolute inset-0 z-10 bg-[#0D121A]/80 backdrop-blur-sm flex items-center justify-center text-center p-6">
-                  <div className="space-y-2">
-                    <Lock className="size-6 text-primary mx-auto opacity-50" />
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Selesaikan CORE</p>
+                <div className="absolute inset-0 z-10 bg-[#0A0E14]/80 backdrop-blur-md flex items-center justify-center text-center p-6">
+                  <div className="space-y-4">
+                    <div className="size-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto shadow-inner">
+                       <Lock className="size-5 text-primary/40" />
+                    </div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">CORE Locked</p>
                   </div>
                 </div>
               )}
-              <div className="flex items-center gap-3">
-                <div className="size-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+              <div className="flex items-center gap-4">
+                <div className="size-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
                   <Trophy className="size-6" />
                 </div>
-                <h3 className="font-bold text-lg uppercase tracking-tight">Major Track</h3>
+                <h3 className="font-black text-lg uppercase tracking-widest text-white">Major Track</h3>
               </div>
-              <div className="space-y-2">
-                {major ? (
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-2xl bg-white/5 text-primary">
-                      {(() => {
-                        const Icon = SPECIALIZATIONS[major].icon;
-                        return <Icon className="size-6" />;
-                      })()}
-                    </div>
-                    <div>
-                      <p className="font-bold text-lg">{SPECIALIZATIONS[major].title}</p>
-                      <p className="text-xs text-muted-foreground uppercase tracking-widest font-mono">Active Path</p>
-                    </div>
-                  </div>
-                ) : (
-                  <p className="text-muted-foreground text-sm italic">Belum memilih jalur...</p>
-                )}
+              <div className="mt-4">
+                <p className="text-muted-foreground text-sm font-medium uppercase tracking-wider italic">Pilih Jalur Spesialisasi...</p>
               </div>
             </Card>
 
-            {/* Overall Activity */}
-            <Card className="bg-[#0D121A] border-white/5 p-8 rounded-[2rem] space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="size-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+            <Card className="bg-white/[0.03] border-white/5 p-8 rounded-[2.5rem] space-y-8 backdrop-blur-sm hover:border-primary/30 transition-all duration-500 text-left">
+              <div className="flex items-center gap-4">
+                <div className="size-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20">
                   <Activity className="size-6" />
                 </div>
-                <h3 className="font-bold text-lg uppercase tracking-tight">Statistik</h3>
+                <h3 className="font-black text-lg uppercase tracking-widest text-white">Statistik</h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-2xl bg-white/5">
-                  <p className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest">Tugas</p>
-                  <p className="text-2xl font-black">12</p>
+                <div className="p-5 rounded-2xl bg-white/5 border border-white/5 shadow-inner">
+                  <p className="text-[9px] text-muted-foreground uppercase font-mono tracking-widest mb-2 font-bold">Tugas</p>
+                  <p className="text-3xl font-black text-white leading-none">12</p>
                 </div>
-                <div className="p-4 rounded-2xl bg-white/5">
-                  <p className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest">Modul</p>
-                  <p className="text-2xl font-black">34</p>
+                <div className="p-5 rounded-2xl bg-white/5 border border-white/5 shadow-inner">
+                  <p className="text-[9px] text-muted-foreground uppercase font-mono tracking-widest mb-2 font-bold">Modul</p>
+                  <p className="text-3xl font-black text-white leading-none">34</p>
                 </div>
               </div>
             </Card>
-          </section>
-
-          {/* SECTION 2: TRACK CONTROL (Visualization) */}
-          <section className="space-y-6">
-            <h2 className="text-xl font-bold tracking-tight px-4">Alur Pembelajaran</h2>
-            <div className="relative flex flex-col md:flex-row items-center gap-4 md:gap-0">
-              {/* Step 1: CORE */}
-              <div className="flex-1 w-full p-8 rounded-3xl bg-white/[0.03] border border-white/5 flex flex-col items-center text-center space-y-4">
-                <div className={cn("size-14 rounded-2xl flex items-center justify-center transition-all shadow-xl", isCoreFinished ? "bg-emerald-500 text-white" : "bg-primary text-primary-foreground")}>
-                  {isCoreFinished ? <CheckCircle2 className="size-8" /> : <Zap className="size-8" />}
-                </div>
-                <div>
-                  <h4 className="font-black uppercase tracking-widest text-xs">Fase CORE</h4>
-                  <p className="text-xs text-muted-foreground mt-1">Foundational Basics</p>
-                </div>
-              </div>
-
-              {/* Arrow */}
-              <div className="hidden md:flex items-center text-muted-foreground px-4">
-                <ChevronRight className="size-8 opacity-20" />
-              </div>
-
-              {/* Step 2: Major */}
-              <div className={cn(
-                "flex-1 w-full p-8 rounded-3xl border flex flex-col items-center text-center space-y-4 transition-all duration-700",
-                major ? "bg-white/[0.03] border-white/5" : "bg-white/[0.01] border-dashed border-white/10 opacity-50"
-              )}>
-                <div className={cn("size-14 rounded-2xl flex items-center justify-center transition-all", major ? "bg-primary text-primary-foreground shadow-xl" : "bg-white/5 text-muted-foreground")}>
-                  <Trophy className="size-8" />
-                </div>
-                <div>
-                  <h4 className="font-black uppercase tracking-widest text-xs">Major Track</h4>
-                  <p className="text-xs text-muted-foreground mt-1">{major ? SPECIALIZATIONS[major].title : "Locked Selection"}</p>
-                </div>
-              </div>
-
-              {/* Arrow */}
-              <div className="hidden md:flex items-center text-muted-foreground px-4">
-                <ChevronRight className="size-8 opacity-20" />
-              </div>
-
-              {/* Step 3: Elite */}
-              <div className={cn(
-                "flex-1 w-full p-8 rounded-3xl border flex flex-col items-center text-center space-y-4 transition-all duration-700",
-                second ? "bg-white/[0.03] border-white/5" : "bg-white/[0.01] border-dashed border-white/10 opacity-30"
-              )}>
-                <div className={cn("size-14 rounded-2xl flex items-center justify-center transition-all", second ? "bg-amber-500 text-white shadow-xl" : "bg-white/5 text-muted-foreground")}>
-                  <Plus className="size-8" />
-                </div>
-                <div>
-                  <h4 className="font-black uppercase tracking-widest text-xs">Elite Multi-Track</h4>
-                  <p className="text-xs text-muted-foreground mt-1">{second ? SPECIALIZATIONS[second].title : "Locked Multi-Track"}</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex justify-center pt-4">
-              <Button 
-                variant="ghost" 
-                className="text-primary hover:bg-primary/10 rounded-xl gap-2 font-black uppercase tracking-widest text-xs px-8 h-12"
-                onClick={() => navigate("/materi")}
-              >
-                Atur Spesialisasi & Jalur <ArrowRight className="size-4" />
-              </Button>
-            </div>
           </section>
         </div>
       </main>

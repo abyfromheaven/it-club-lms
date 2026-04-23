@@ -54,7 +54,7 @@ export const MaterialPreview = () => {
   };
 
   return (
-    <section id="materi" className="py-24 bg-muted/10 overflow-hidden">
+    <section id="materi" className="py-24 bg-transparent overflow-hidden">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
@@ -106,18 +106,18 @@ export const MaterialPreview = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative flex flex-col min-w-[280px] sm:min-w-[380px] max-w-[380px] rounded-2xl border border-border bg-card overflow-hidden opacity-90 grayscale-[0.3] hover:grayscale-0 hover:opacity-100 snap-center transition-all duration-500"
+              className="group relative flex flex-col min-w-[280px] sm:min-w-[380px] max-w-[380px] rounded-[2rem] border border-white/5 bg-white/[0.03] overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-primary/30"
             >
               {/* Image with Lock Overlay */}
               <div className="relative aspect-video overflow-hidden">
                 <img 
                   src={item.image} 
                   alt={item.title}
-                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 blur-[2px]"
+                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 grayscale-[0.5] group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
-                  <div className="size-14 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center backdrop-blur-sm">
-                    <Lock className="size-6 text-primary" />
+                <div className="absolute inset-0 bg-[#0A0E14]/60 flex items-center justify-center backdrop-blur-[2px]">
+                  <div className="size-14 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center backdrop-blur-sm text-primary">
+                    <Lock className="size-6" />
                   </div>
                 </div>
                 <div className="absolute top-4 left-4 px-3 py-1.5 rounded-lg bg-black/50 backdrop-blur-md text-[10px] font-mono text-white tracking-widest uppercase border border-white/10">
@@ -126,20 +126,16 @@ export const MaterialPreview = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-8">
                 <div className="flex items-center gap-4 text-[10px] text-muted-foreground font-mono mb-4">
-                  <span className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">
-                    <Clock className="size-3 text-primary/70" /> {item.duration}
-                  </span>
-                  <span className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">
-                    <Eye className="size-3 text-primary/70" /> {item.views} Views
+                  <span className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-full border border-white/5 uppercase tracking-widest font-bold">
+                    <Clock className="size-3 text-primary" /> {item.duration}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold tracking-tight mb-4 text-white group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold tracking-tight mb-6 text-white group-hover:text-primary transition-colors">
                   {item.title}
                 </h3>
-                <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden relative">
-                  <div className="absolute inset-0 bg-primary/5" />
+                <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden relative">
                   <div className="h-full bg-gradient-gold w-0 group-hover:w-full transition-all duration-1000 ease-out" />
                 </div>
               </div>

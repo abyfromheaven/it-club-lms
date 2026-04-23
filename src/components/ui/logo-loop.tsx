@@ -49,10 +49,10 @@ const LogoLoop = ({
       {fadeOut && (
         <>
           <div 
-            className="absolute top-0 left-0 z-10 h-full w-24 pointer-events-none bg-gradient-to-r from-background to-transparent"
+            className="absolute top-0 left-0 z-10 h-full w-32 pointer-events-none bg-gradient-to-r from-[#0A0E14] to-transparent"
           />
           <div 
-            className="absolute top-0 right-0 z-10 h-full w-24 pointer-events-none bg-gradient-to-l from-background to-transparent"
+            className="absolute top-0 right-0 z-10 h-full w-32 pointer-events-none bg-gradient-to-l from-[#0A0E14] to-transparent"
           />
         </>
       )}

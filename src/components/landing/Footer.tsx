@@ -65,7 +65,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-t border-white/5 bg-[#0D121A]/30">
+    <footer className="py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#0A0E14]">
       <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10">
         <div className="mb-8 flex items-center justify-center gap-4">
           <div className="size-12 rounded-full overflow-hidden border border-white/10 bg-white/5 shadow-gold p-1">

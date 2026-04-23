@@ -31,24 +31,41 @@ const techLogos = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-[#0A0E14] text-foreground selection:bg-primary/30 overflow-x-hidden">
       <Navbar />
-      <main>
+      <main className="relative">
+        {/* Global Atmospheric Glows - Matched to Hero Vibe */}
+        <div className="absolute top-[15%] -left-[10%] size-[600px] bg-primary/15 blur-[140px] rounded-full pointer-events-none z-0" />
+        <div className="absolute top-[45%] -right-[10%] size-[800px] bg-primary/5 blur-[160px] rounded-full pointer-events-none z-0" />
+        <div className="absolute bottom-[20%] -left-[5%] size-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none z-0" />
+
         <Hero />
         
-        <div className="py-12 border-y border-white/5 bg-white/[0.01]">
-          <div className="container mb-10 text-center">
-            <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-[0.5em]">
-              Teknologi & Tools yang Dipelajari
-            </p>
+        {/* Logo Loop Section - Integrated better */}
+        <div className="py-24 relative z-10 bg-transparent">
+          <div className="container mb-12 text-center">
+            <div className="flex items-center justify-center gap-4 opacity-50 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-muted-foreground" />
+              <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-[0.5em]">
+                Standardisasi Industri
+              </p>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-muted-foreground" />
+            </div>
           </div>
           <LogoLoop items={techLogos} speed={40} gap={100} height={55} />
         </div>
 
-        <Stats />
-        <Categories />
-        <MaterialPreview />
-        <HowWeLearn />
+        <div className="relative z-10">
+          <Stats />
+        </div>
+
+        <div className="relative z-10">
+          <Categories />
+        </div>
+        
+        <div className="relative z-10 pb-32">
+          <MaterialPreview />
+        </div>
       </main>
       <Footer />
     </div>

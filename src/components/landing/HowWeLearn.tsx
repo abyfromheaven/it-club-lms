@@ -53,10 +53,10 @@ export const HowWeLearn = () => {
               className="relative flex flex-col items-center text-center"
             >
               <div className="relative">
-                <div className="grid place-items-center size-24 rounded-2xl bg-card border border-primary/30 shadow-card">
+                <div className="grid place-items-center size-24 rounded-[2rem] bg-white/[0.03] border border-white/10 shadow-xl backdrop-blur-md group-hover:border-primary/50 transition-all duration-500">
                   <s.icon className="size-9 text-primary" strokeWidth={1.5} />
                 </div>
-                <span className="absolute -top-2 -right-2 grid place-items-center size-8 rounded-full bg-gradient-gold text-primary-foreground font-mono text-xs font-bold">
+                <span className="absolute -top-2 -right-2 grid place-items-center size-8 rounded-xl bg-gradient-gold text-primary-foreground font-mono text-xs font-bold shadow-gold">
                   {s.n}
                 </span>
               </div>

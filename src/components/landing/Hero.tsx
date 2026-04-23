@@ -1,134 +1,99 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, Play, Circle } from "lucide-react";
+import { ArrowRight, Play, Cpu, Shield, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+import { LoginDialog } from "@/components/auth/LoginDialog";
+import { GridScan } from "@/components/ui/grid-scan";
 
 export const Hero = () => {
-  const { toast } = useToast();
-
-  const handleStartLearning = () => {
-    toast({
-      title: "Akses Terkunci",
-      description: "Silakan hubungi admin IT CLUB untuk aktivasi akun Anggota Anda.",
-      variant: "destructive",
-    });
-  };
-
   return (
-    <section className="relative pt-32 md:pt-40 pb-20 overflow-hidden">
-      <div className="absolute inset-0 grid-bg pointer-events-none" />
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-accent/10 blur-3xl pointer-events-none" />
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0A0E14]">
+      {/* Dynamic Background with GridScan */}
+      <div className="absolute inset-0 z-0">
+        <GridScan
+          sensitivity={0.3}
+          lineThickness={1.5}
+          linesColor="#1E293B"
+          gridScale={0.15}
+          scanColor="#FFD700"
+          scanOpacity={1.0}
+          bloomIntensity={1.0}
+          scanGlow={1.0}
+          scanSoftness={3.0}
+          enablePost={false}
+          scanDuration={3}
+          scanDelay={0.2}
+        />
+        {/* Adjusted gradients to let the light shine through more while keeping text readable */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E14] via-[#0A0E14]/40 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E14] via-transparent to-transparent z-10" />
+      </div>
 
-      <div className="container relative grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="space-y-7"
-        >
+      <div className="container relative z-20">
+        <div className="max-w-3xl space-y-8">
+          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-xs font-medium"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
           >
-            <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-            <span className="text-primary">SMK 1 TRIPLE "J"</span>
-            <span className="text-muted-foreground">— Learning Management System</span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-primary">
+              Enrollment Open - Batch 2024
+            </span>
           </motion.div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tightest leading-[1.05]">
-            Level Up Your Tech Skills with{" "}
-            <span className="text-gradient-gold">IT CLUB SMK 1 TRIPLE "J"</span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Digital learning hub untuk IT CLUB. Sinkronkan progresmu, akses arsip materi internal, dan kuasai setiap modul pembelajaran kapan saja dalam satu platform terpadu.
-          </p>
-
+          {/* Main Title */}
           <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button variant="gold" size="lg" className="group" onClick={handleStartLearning}>
-                Mulai Belajar
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button variant="outlineGold" size="lg">
-                <BookOpen className="size-4" />
-                Lihat Katalog
-              </Button>
-            </div>
-            <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest">
-              Akses terbatas hanya untuk anggota aktif IT CLUB SMK 1 TRIPLE "J". 
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="relative"
-        >
-          <div className="absolute -inset-4 bg-gradient-auth opacity-20 blur-2xl rounded-3xl" />
-          <div className="relative rounded-xl border border-border bg-card shadow-card overflow-hidden">
-            {/* Window chrome */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-muted/30">
-              <div className="flex items-center gap-1.5">
-                <Circle className="size-3 fill-destructive text-destructive" />
-                <Circle className="size-3 fill-primary text-primary" />
-                <Circle className="size-3 fill-emerald-500 text-emerald-500" />
-              </div>
-              <span className="font-mono text-xs text-muted-foreground">~/itclub/dashboard.tsx</span>
-              <span className="size-3" />
-            </div>
-
-            {/* Code */}
-            <pre className="p-5 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto">
-              <code className="block">
-                <span className="text-muted-foreground">// Welcome, Anggota 👋</span>{"\n"}
-                <span className="text-accent-2">const</span>{" "}
-                <span className="text-primary">anggota</span> = {"{"}
-                {"\n  "}name: <span className="text-emerald-400">"Anggota IT Club"</span>,
-                {"\n  "}level: <span className="text-emerald-400">"Junior Dev"</span>,
-                {"\n  "}tracks: [
-                {"\n    "}<span className="text-emerald-400">"IoT"</span>,
-                {"\n    "}<span className="text-emerald-400">"CyberSec"</span>,
-                {"\n    "}<span className="text-emerald-400">"Networking"</span>
-                {"\n  "}],
-                {"\n  "}progress: <span className="text-primary">87</span>
-                {"\n"}{"}"};{"\n\n"}
-                <span className="text-accent-2">await</span>{" "}
-                <span className="text-primary">lms</span>.<span className="text-foreground">stream</span>(anggota);
-              </code>
-            </pre>
-
-            {/* Stat strip */}
-            <div className="border-t border-border px-5 py-4 flex items-center justify-between bg-muted/20">
-              <div className="flex items-center gap-2 text-xs">
-                <div className="grid place-items-center size-8 rounded-md bg-primary/10 border border-primary/30">
-                  <Play className="size-3.5 text-primary fill-primary" />
-                </div>
-                <div>
-                  <div className="font-semibold">Modul 12: Network Layer</div>
-                  <div className="text-muted-foreground font-mono">14:32 / 22:18</div>
-                </div>
-              </div>
-              <div className="font-mono text-xs text-primary">87%</div>
-            </div>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tightest leading-[1.1] text-white"
+            >
+              LEVEL UP YOUR <br />
+              <span className="text-gradient-gold">TECH SKILLS</span>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
+            >
+              Platform pembelajaran eksklusif untuk Anggota IT CLUB. 
+              Kuasai IoT, Cyber Security, dan Networking dengan kurikulum standar industri.
+            </motion.p>
           </div>
 
-          {/* Floating badge */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-4 -top-4 sm:-right-6 sm:-top-6 px-4 py-2.5 rounded-xl bg-card border border-primary/30 shadow-gold"
+          {/* Actions */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-wrap items-center gap-5 pt-4 pb-20"
           >
-            <div className="flex items-center gap-2">
-              <div className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs font-mono">Live Session</span>
-            </div>
+            <LoginDialog>
+              <Button 
+                size="lg" 
+                className="h-14 px-8 rounded-2xl bg-gradient-gold text-primary-foreground font-black uppercase tracking-widest text-xs gap-3 shadow-gold hover:scale-[1.02] transition-all group"
+              >
+                Mulai Belajar <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </LoginDialog>
+            
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="h-14 px-8 rounded-2xl border-white/10 bg-white/5 backdrop-blur-md font-bold uppercase tracking-widest text-xs gap-3 hover:bg-white/10 transition-all"
+            >
+              <Play className="size-4 fill-current" /> Lihat Kurikulum
+            </Button>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
