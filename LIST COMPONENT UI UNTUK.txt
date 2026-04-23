@@ -1,0 +1,122 @@
+LIST COMPONENT UI UNTUK LMS
+
+1. Card untuk Preview Materi pada Landing Page
+https://magicui.design/docs/components/marquee
+
+2. untuk tampilan video materi youtube
+https://magicui.design/docs/components/hero-video-dialog
+
+3. Notifikasi
+https://magicui.design/docs/components/animated-list
+
+4. Dock (Pengganti Navbar)
+https://magicui.design/docs/components/dock
+
+5. Menampilkan Roadmap / Antarhubungan Materi
+https://magicui.design/docs/components/animated-beam
+
+6. Animasi Light Beam
+https://magicui.design/docs/components/border-beam
+
+7. Magic Card
+https://magicui.design/docs/components/magic-card
+
+8. Kilauan Card
+https://magicui.design/docs/components/glare-hover
+
+9. Efek Blur Fade
+https://magicui.design/docs/components/blur-fade
+
+10. Aurora Text
+https://magicui.design/docs/components/aurora-text
+
+11. Video Text
+https://magicui.design/docs/components/video-text
+
+12. Dia Text Reveal
+https://magicui.design/docs/components/dia-text-reveal
+
+11. Scroll Based Velocity
+https://magicui.design/docs/components/scroll-based-velocity
+
+12. Safari Browser Mockup
+https://magicui.design/docs/components/safari
+
+13. Shimmer Button
+https://magicui.design/docs/components/shimmer-button
+
+14. Retro Grid
+https://magicui.design/docs/components/retro-grid
+
+15. Warp Background
+https://magicui.design/docs/components/warp-background
+
+16. React Logo Marquee
+https://seraui.com/docs/marquee
+
+17. Mungkin bisa digunakan untuk matriks kurikulum
+https://seraui.com/docs/orbits
+https://seraui.com/docs/orbiting
+
+18. Dialog Display Content
+https://seraui.com/docs/modal
+
+19. Radio Buttons
+https://seraui.com/docs/radio-buttons
+
+20. Progress Bar
+https://seraui.com/docs/progress
+
+21. Dropdown Menu
+https://seraui.com/docs/dropdown
+
+22. Status Badge
+https://seraui.com/docs/badge
+
+23. Animated Badge
+https://seraui.com/docs/animatedbadge
+
+24. Verify Badge
+https://seraui.com/docs/verify-badge
+
+25. Toast Notification
+https://seraui.com/docs/toast
+
+26. Search Input
+https://seraui.com/docs/search
+
+27. Dock/Tabs/Navbar
+https://seraui.com/docs/doctabs
+
+28. Footer
+https://seraui.com/docs/footer
+
+29. Bisa digunakan untuk list anggota
+https://seraui.com/docs/teammember
+
+30. FAQ Section
+https://seraui.com/docs/faq
+
+31. Loading Spinners
+https://seraui.com/docs/loaders
+
+32. Motion Text Headline
+https://lunarui.dev/components/react/scroll-animations/motion-text
+
+33. Scroll Reveal
+https://lunarui.dev/components/react/scroll-animations/scroll-reveal
+
+36. bisa digunakan preview materi di landing page
+https://www.reactbits.dev/components/circular-gallery
+
+37. Folder
+https://www.reactbits.dev/components/folder
+
+38. Profile Card
+https://www.reactbits.dev/components/profile-card	
+
+39. Card Swap
+https://www.reactbits.dev/components/card-swap
+
+40. Flowing Menu
+https://www.reactbits.dev/components/flowing-menu
